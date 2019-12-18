@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CharacterCard from './CharacterCard';
-import CharacterList from "./CharacterList";
+
 
 export default function SearchForm(props) {
 
   const[morty, setMorty] = useState("");
 
   const[summer, setSummer] = useState(props.character);
-
-  useEffect(()=> {}, [morty]);
+  
 
   const handleChange = event => {
     setMorty(event.target.value);

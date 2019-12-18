@@ -2,12 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
 import SearchForm from './SearchForm';
+import styled from 'styled-components';
 
-export default function CharacterList(props) {
+let CardHolder = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #DFBC82;
+  `;
+
+export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
-  const[rick, setRick] = useState([])
+  const[rick, setRick] = useState([]);
 
-  useEffect((props) => {
+  useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     axios.get("https://rickandmortyapi.com/api/character/")
     .then(meeseeks => {
@@ -24,7 +32,7 @@ export default function CharacterList(props) {
   console.log(rick);
 
   return (
-    <section className="character-list">
+    <CardHolder className="character-list">
       <h1>The LineUp</h1>
       <SearchForm character = {rick}/>
   <div>{rick.map((schmeckle, plumbus) => {
@@ -38,6 +46,6 @@ export default function CharacterList(props) {
         />
     )
   })}</div>
-    </section>
+    </CardHolder>
   );
 }
